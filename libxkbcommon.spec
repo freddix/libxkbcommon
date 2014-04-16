@@ -1,11 +1,11 @@
 Summary:	Keyboard handling library using XKB data
 Name:		libxkbcommon
-Version:	0.4.0
+Version:	0.4.1
 Release:	1
 License:	other
 Group:		Libraries
 Source0:	http://xkbcommon.org/download/%{name}-%{version}.tar.xz
-# Source0-md5:	bb782f1700e45b4f57c84ef513e3cf85
+# Source0-md5:	b70f4ed97b6c9432dc956e4177f3336a
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	libtool
@@ -43,6 +43,8 @@ rm -rf $RPM_BUILD_ROOT
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
 
+%{__rm} $RPM_BUILD_ROOT%{_libdir}/*.la
+
 %clean
 rm -rf $RPM_BUILD_ROOT
 
@@ -51,7 +53,6 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc README
 %attr(755,root,root) %ghost %{_libdir}/libxkbcommon*.so.0
 %attr(755,root,root) %{_libdir}/libxkbcommon*.so.*.*.*
 
